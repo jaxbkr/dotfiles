@@ -18,7 +18,6 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
-source ~/.localrc
 ZSH_THEME="passion"
 
 
@@ -30,9 +29,6 @@ plugins=(
 	you-should-use
 	)
 
-source $ZSH/oh-my-zsh.sh
-
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
@@ -40,13 +36,6 @@ else
 export EDITOR='nvim'
 fi
 
-source $XDG_DATA_HOME/oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-. "$ASDF_DATA_DIR"/asdf.sh
-
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 autoload -Uz compinit && compinit
@@ -84,13 +73,6 @@ alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias info=fastfetch
 alias gcc=gcc-13
-# pnpm
-export PNPM_HOME="/Users/jackson/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 export PATH=/usr/local/bin:$PATH
 
