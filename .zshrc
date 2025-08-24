@@ -12,22 +12,20 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME"/asdf
 export HISTFILE="${XDG_STATE_HOME}"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export ZSH="$XDG_DATA_HOME"/oh-my-zsh
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="passion"
-
-
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 
 plugins=(
 	git
-	you-should-use
-	)
+	zsh-syntax-highlighting
+)
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -36,10 +34,6 @@ else
 export EDITOR='nvim'
 fi
 
-# initialise completions with ZSH's compinit
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-autoload -Uz compinit && compinit
-export PATH="/usr/local/sbin:$PATH"
 # Set the default editor
 export EDITOR=nvim
 export VISUAL=nvim
@@ -76,6 +70,6 @@ alias gcc=gcc-13
 
 export PATH=/usr/local/bin:$PATH
 
-
+source $ZSH/oh-my-zsh.sh
 
 
