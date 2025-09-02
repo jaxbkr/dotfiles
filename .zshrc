@@ -25,6 +25,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 plugins=(
 	git
 	zsh-syntax-highlighting
+	poetry
 )
 
 # Preferred editor for local and remote sessions
@@ -67,9 +68,10 @@ alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias info=fastfetch
 alias gcc=gcc-13
+alias envme='eval $(poetry env activate)'
 
 export PATH=/usr/local/bin:$PATH
-
+export PATH="$HOME/.local/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 
