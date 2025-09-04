@@ -23,7 +23,6 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 plugins=(
 	git
-	you-should-use
   zsh-syntax-highlighting
   poetry
 )
@@ -72,7 +71,7 @@ alias envme='eval $(poetry env activate)'
 
 export PATH=/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 
 
