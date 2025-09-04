@@ -8,25 +8,29 @@ export XDG_RUNTIME_DIR="/run/user/$UID"
 
 # More enviroment variables
 
-export ASDF_DATA_DIR="$XDG_DATA_HOME"/asdf
 export HISTFILE="${XDG_STATE_HOME}"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export ZSH="$XDG_DATA_HOME"/oh-my-zsh
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export ZSH="$HOME/.oh-my-zsh"
 
+source ~/.localrc
 ZSH_THEME="passion"
+
+
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 
 plugins=(
 	git
-	zsh-syntax-highlighting
-	poetry
-)
+	you-should-use
+	)
+
+source $ZSH/oh-my-zsh.sh
+
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -35,6 +39,12 @@ else
 export EDITOR='nvim'
 fi
 
+source $XDG_DATA_HOME/oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# initialise completions with ZSH's compinit
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+autoload -Uz compinit && compinit
+export PATH="/usr/local/sbin:$PATH"
 # Set the default editor
 export EDITOR=nvim
 export VISUAL=nvim
@@ -68,10 +78,16 @@ alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias info=fastfetch
 alias gcc=gcc-13
-alias envme='eval $(poetry env activate)'
+# pnpm
+export PNPM_HOME="/Users/jackson/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
-source $ZSH/oh-my-zsh.sh
+
+
 
 

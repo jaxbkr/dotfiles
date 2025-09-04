@@ -1,0 +1,11 @@
+[user]
+	name = jaxbkr
+	email = jackson.baker7562@gmail.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = true
+[core]
+	excludesfile = /Users/jackson/.gitignore_global
